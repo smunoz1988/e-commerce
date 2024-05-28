@@ -1,21 +1,25 @@
 import './App.css';
+import { useState, useEffect } from 'react'
 
 function App() {
+  const [results, setResults] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3001/categories')
+    .then(response => response.json())
+    .then(data => {
+      setResults(data);
+    })
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {results.map((result) => (
+        <div key={result.id}>
+          {result.title}
+        </div>
+      )
+      )}
     </div>
   );
 }
