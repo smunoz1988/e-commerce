@@ -1,0 +1,11 @@
+{
+  "categories": [
+    {"id": 1, "tittle": "Fridges"},
+    {"id": 2, "tittle": "Kettles"},
+    {"id": 2, "tittle": "Televisions"}
+  ],
+  "products": [
+    {"id": 1, "catId": 1, "tittle":"Beko etooo"},
+    {"id": 2, "catId": 1, "tittle":"Lalud lalum neos cortex"}
+  ]
+}
