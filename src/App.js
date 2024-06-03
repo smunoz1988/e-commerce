@@ -1,33 +1,36 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import Category from './components/Category.jsx';
+import { fetcher } from './fetcher.js';
 
 function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/categories')
-      .then(response => response.json())
-      .then(data => {
+    const fetchCategories = async () => {
+      try {
+        const data = await fetcher('/categories');
         setCategories(data);
-      });
-  }, []);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);  // Add an empty dependency array to run the effect only once
 
   const handleCategoryClick = (id) => {
-    fetch(`http://localhost:3001/products?catId=${id}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-      })
-      .then(data => {
+    const fetchProducts = async () => {
+      try {
+        const data = await fetcher(`/products?catId=${id}`);
         setProducts(data);
-      })
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
   };
 
   const renderCategories = () => {
@@ -51,7 +54,7 @@ function App() {
         </nav>
         <article>
           <h3>Products</h3>
-          {products && renderProducts()}
+          {products.length > 0 ? renderProducts() : <p>No products to display</p>}
         </article>
       </section>
       <footer>
