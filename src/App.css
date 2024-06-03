@@ -1,0 +1,63 @@
+/* Reset some default styles */
+body, html, div, h1, h2, h3, h4, h5, h6, p, a, ul, li, footer, header, section, article, nav {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  
+  section {
+    display: flex;
+    margin: 20px;
+  }
+  
+  nav {
+    width: 25%;
+    background: #f4f4f4;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav div {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  nav div:hover {
+    background: #ddd;
+  }
+  
+  article {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    margin-left: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+  
