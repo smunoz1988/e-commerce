@@ -1,5 +1,6 @@
 import './App.css';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import Category from './components/Category.jsx';
 
 function App() {
   const [results, setResults] = useState([])
@@ -12,15 +13,19 @@ function App() {
     })
   }, [])
 
+  const renderCategories = () => {
+    return results.map((result) => (
+      <Category key={result.id} product={result} />
+    ))
+  }
+
   return (
     <>
     <header>My Store</header>
     <section>
       <nav>
         {
-          results.map((result) => (
-            <div key={result.id}>{result.title}</div>
-        ))
+        results && renderCategories()
         }
       </nav>
       <article>
