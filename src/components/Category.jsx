@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-const Category = ({product}) => {
+const Category = ({ product, onCategoryClick }) => {
   return (
-    <div>{product.title}</div>
-  )
-}
+    <div onClick={() => onCategoryClick(product.id)}>{product.title}</div>
+  );
+};
 
-export default Category
+export default Category;
